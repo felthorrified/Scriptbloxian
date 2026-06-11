@@ -1,0 +1,87 @@
+-- ts file was generated at discord.gg/25ms
+
+local _LocalPlayer4 = game:GetService('Players').LocalPlayer
+local _8 = loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/Library.lua'))()
+local _12 = loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/addons/ThemeManager.lua'))()
+local _16 = loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/addons/SaveManager.lua'))()
+
+_LocalPlayer4:IsInGroup(9350343205)
+
+local _call20 = _8:CreateWindow({
+    AutoShow = true,
+    Title = 'Scriptbloxian | Premium Hub',
+    MenuFadeTime = 0.2,
+    TabPadding = 8,
+    Center = true,
+})
+local _call22 = _call20:AddTab('Main Features')
+local _call24 = _call20:AddTab('UI Settings')
+local _call26 = _call22:AddLeftGroupbox('Player Tweaks')
+
+_call26:AddButton({
+    Tooltip = 'Prints basic verification string to developer log console.',
+    Text = 'Print Hello World',
+    Func = function()
+        print('Hello World!')
+    end,
+    DoubleClick = false,
+})
+_call26:AddToggle('InfJumpToggle', {
+    Callback = function(_33)
+        print('Infinite Jump set to: ' .. tostring(_33))
+    end,
+    Text = 'Infinite Jump Toggle',
+    Default = false,
+    Tooltip = 'Toggles continuous jump capability.',
+})
+_call26:AddSlider('WalkSpeedSlider', {
+    Min = 16,
+    Default = 16,
+    Compact = false,
+    Max = 100,
+    Text = 'WalkSpeed customizer',
+    Callback = function(_39)
+        local _ = _LocalPlayer4.Character
+
+        _LocalPlayer4.Character:FindFirstChildOfClass('Humanoid')
+
+        local _call46 = _LocalPlayer4.Character:FindFirstChildOfClass('Humanoid')
+
+        _call46.WalkSpeed = _39
+    end,
+    Rounding = 0,
+})
+
+local _call48 = _call22:AddRightGroupbox('Configuration Layer')
+
+_call48:AddDropdown('SelectionMatrix', {
+    Values = {
+        [1] = 'Option 1',
+        [2] = 'Option 2',
+    },
+    Text = 'Select Menu Option',
+    Tooltip = 'Changes functional parameters.',
+    Multi = false,
+    Callback = function(_51)
+        print('Dropdown changed to: ' .. _51)
+    end,
+    Default = 1,
+})
+_call48:AddInput('CustomShoutBox', {
+    Finished = true,
+    Default = '',
+    Placeholder = 'Type string variables...',
+    Numeric = false,
+    Text = 'Custom Text Parameter',
+    Callback = function(_56)
+        print('User entered string value: ' .. _56)
+    end,
+    Tooltip = 'Press Enter to submit values',
+})
+_12:SetLibrary(_8)
+_16:SetLibrary(_8)
+_12:SetFolder('EliteVaultConfig')
+_16:SetFolder('EliteVaultConfig/main')
+_12:ApplyToTab(_call24)
+_16:BuildConfigSection(_call24)
+_8:Notify('EliteVault Premium successfully activated!', 5)
